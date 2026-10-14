@@ -250,6 +250,8 @@
   }
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
 
+  .global-copy-toast{position:fixed;z-index:10000;left:50%;bottom:24px;transform:translate(-50%,10px);padding:11px 16px;border-radius:999px;background:#151a16;color:#fff;font-size:12px;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.2);opacity:0;visibility:hidden;transition:opacity .18s ease,transform .18s ease,visibility .18s ease;pointer-events:none}
+  .global-copy-toast.visible{opacity:1;visibility:visible;transform:translate(-50%,0)}
   /* Shared sections: schedule and contact — consistent components, individual concept palettes */
   .schedule-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
   .schedule-card{min-width:0;border:1px solid var(--navline);background:var(--soft);padding:22px;display:flex;flex-direction:column;align-items:flex-start;min-height:205px;justify-content:space-between;gap:22px}
@@ -258,11 +260,22 @@
   .schedule-card p{font-size:11px;line-height:1.6;color:var(--muted);margin:0}
   .schedule-time{display:inline-flex;padding:8px 10px;border:1px solid var(--navline);font-size:11px;font-weight:800;letter-spacing:.01em;color:var(--fg)}
   .schedule-note{font-size:10px;line-height:1.6;color:var(--muted);margin:16px 0 0}
-  .contact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-  .contact-card{min-width:0;min-height:190px;border:1px solid var(--navline);padding:24px;background:transparent;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:25px}
-  .contact-card h4{font-family:'Manrope',sans-serif;font-weight:700;letter-spacing:-.035em;font-size:19px;line-height:1.25;margin:10px 0 6px;overflow-wrap:anywhere}
-  .contact-card p{font-size:11px;line-height:1.7;color:var(--muted);margin:0}
-  .contact-card a{font-size:11px;font-weight:700;color:var(--accent);border-bottom:1px solid currentColor;padding-bottom:4px;max-width:100%;overflow-wrap:anywhere}
+  .contact-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+  .contact-card{min-width:0;min-height:170px;border:1px solid var(--navline);padding:20px;background:transparent;display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;gap:18px}
+  .contact-card-top{min-width:0}
+  .contact-card h4{font-family:'Manrope',sans-serif;font-weight:700;letter-spacing:-.035em;font-size:18px;line-height:1.25;margin:10px 0 0;overflow-wrap:anywhere}
+  .contact-line{display:flex;align-items:center;justify-content:space-between;gap:9px;min-width:0;width:100%}
+  .contact-value{font-size:11px;line-height:1.65;color:var(--fg);overflow-wrap:anywhere;min-width:0}
+  .copy-icon-btn,.copy-icon-btn-5{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:34px;height:34px;border:1px solid var(--navline);border-radius:50%;background:transparent;color:var(--fg);cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
+  .copy-icon-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .copy-icon-btn svg,.copy-icon-btn-5 svg{display:block}
+  .social-contact-link{display:inline-flex;align-items:center;gap:9px;min-width:0;font-size:11px;font-weight:700;color:var(--fg);text-decoration:none;overflow-wrap:anywhere}
+  .social-contact-link svg{flex:0 0 24px}
+  .social-contact-link:hover{color:var(--accent)}
+  #performance .copy-icon-btn{border-color:#484c4e;color:#fff}
+  #performance .copy-icon-btn:hover{background:var(--accent);border-color:var(--accent);color:#101010}
+  #capa5 .copy-icon-btn-5{border-color:rgba(255,255,255,.23);color:#fff}
+  #capa5 .copy-icon-btn-5:hover{border-color:#A7CE54;background:#A7CE54;color:#101510}
   #performance .schedule-card,#performance .contact-card{background:#1e2225;border-color:#383b3d}
   #performance .schedule-card p,#performance .contact-card p{color:#b8babc}
   #performance .schedule-time{border-color:#484c4e;color:#fff}
@@ -272,7 +285,7 @@
   #oviax .contact-card{background:#fafaf4}
   #oviax .schedule-card h4,#oviax .contact-card h4{font-weight:800}
   @media(max-width:1050px){.schedule-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.contact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  @media(max-width:640px){.schedule-grid,.contact-grid{grid-template-columns:1fr}.schedule-card{min-height:160px;padding:20px}.contact-card{min-height:155px;padding:21px}.schedule-card h4{font-size:18px}}
+  @media(max-width:640px){.schedule-grid,.contact-grid{grid-template-columns:1fr}.schedule-card{min-height:160px;padding:20px}.contact-card{min-height:130px;padding:20px}.schedule-card h4{font-size:18px}}
   /* Fifth proposal is isolated in its own wrapper while sharing the site's type system and shell. */
   #capa5{--bg:#F6F6F3;--fg:#0A0B0A;background:#F6F6F3;color:#0A0B0A;font-family:'DM Sans',sans-serif;overflow-x:hidden;}
   #capa5 .font-display,#capa5 .font-syne{font-family:'Manrope',sans-serif!important}
@@ -341,6 +354,7 @@
 </style>
 <script>tailwind.config = { corePlugins: { preflight: false }, theme: { extend: { fontFamily: { display: ['Manrope', 'sans-serif'], syne: ['Manrope', 'sans-serif'], serif: ['DM Serif Display', 'serif'], sans: ['DM Sans', 'sans-serif'] }, colors: { oviax: { dark: '#0A0B0A', card: '#121513', light: '#F6F6F3', white: '#FFFFFF', borderDark: 'rgba(255, 255, 255, 0.1)', borderLight: 'rgba(10, 11, 10, 0.1)', green: '#1E7A3B', lime: '#A7CE54' } } } } };</script><script src="https://cdn.tailwindcss.com"></script></head>
 <body>
+<div aria-live="polite" class="global-copy-toast" id="global-copy-toast" role="status"></div>
 <div class="showcase">
 <div aria-label="Escolher proposta de design" class="design-tabs" role="group">
 <button aria-label="Opção 1" aria-pressed="true" class="design-tab" data-target="editorial" type="button"><span class="tab-num">1</span></button>
@@ -384,9 +398,22 @@
 </section><section class="section contact-section" id="ed-contactos">
 <div class="section-head"><div><span class="kicker">Contactos</span><h3>Começamos por uma conversa.</h3></div><p>Queres experimentar a patinagem artística ou saber qual o grupo mais adequado? Fala diretamente com o Clube Araújo.</p></div>
 <div class="contact-grid">
-<article class="contact-card"><div><span class="contact-label">01 / Email</span><h4>Escreve-nos</h4><p>Para informações sobre inscrições, treinos e primeira aula.</p></div><a href="mailto:capa_2006@sapo.pt?subject=Informações%20—%20Clube%20Araújo">capa_2006@sapo.pt ↗</a></article>
-<article class="contact-card"><div><span class="contact-label">02 / Localização</span><h4>Visita-nos na pista</h4><p>Pavilhão Desportivo Municipal de Leça do Balio · Rua D. Frei Aires, 38, Matosinhos.</p></div><a href="https://www.google.com/maps/search/?api=1&amp;query=Pavilhao+Desportivo+Municipal+Leca+do+Balio+Rua+D+Frei+Aires" rel="noopener" target="_blank">Abrir Google Maps ↗</a></article>
-<article class="contact-card"><div><span class="contact-label">03 / Redes sociais</span><h4>Acompanha o clube</h4><p>Publicações, eventos e novidades na página oficial.</p></div><a href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Facebook oficial ↗</a></article>
+<article class="contact-card">
+  <div class="contact-card-top"><span class="contact-label">01 / Email</span><h4>Email</h4></div>
+  <div class="contact-line"><span class="contact-value">capa_2006@sapo.pt</span><button type="button" class="copy-icon-btn" aria-label="Copiar email" title="Copiar email" onclick="copyValue('capa_2006@sapo.pt','Email copiado')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+</article>
+<article class="contact-card">
+  <div class="contact-card-top"><span class="contact-label">02 / Localização</span><h4>Pavilhão</h4></div>
+  <div class="contact-line"><span class="contact-value">Pavilhão Desportivo Municipal de Leça do Balio, Rua D. Frei Aires, 38, Matosinhos</span><button type="button" class="copy-icon-btn" aria-label="Copiar morada" title="Copiar morada" onclick="copyValue('Pavilhão Desportivo Municipal de Leça do Balio, Rua D. Frei Aires, 38, Matosinhos','Morada copiada')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+</article>
+<article class="contact-card">
+  <div class="contact-card-top"><span class="contact-label">03 / Facebook</span><h4>Segue o clube</h4></div>
+  <div class="contact-line"><a class="social-contact-link" href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank"><svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.019 4.388 11.002 10.125 11.854v-8.385H7.078v-3.469h3.047V9.429c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.236 2.686.236v2.953H15.83c-1.491 0-1.955.931-1.955 1.887v2.264h3.328l-.532 3.469h-2.796v8.385C19.612 23.075 24 18.092 24 12.073z"/></svg><span>Clube Araújo</span></a><button type="button" class="copy-icon-btn" aria-label="Copiar link do Facebook" title="Copiar link do Facebook" onclick="copyValue('https://www.facebook.com/ClubeAraujoPA/','Link do Facebook copiado')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+</article>
+<article class="contact-card">
+  <div class="contact-card-top"><span class="contact-label">04 / Instagram</span><h4>Acompanha-nos</h4></div>
+  <div class="contact-line"><a class="social-contact-link" href="https://www.instagram.com/clubearaujo.patinagem/" rel="noopener" target="_blank"><svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.7" r=".8" fill="currentColor" stroke="none"/></svg><span>@Clubearaujo.patinagem</span></a><button type="button" class="copy-icon-btn" aria-label="Copiar Instagram" title="Copiar Instagram" onclick="copyValue('@Clubearaujo.patinagem','Instagram copiado')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+</article>
 </div>
 </section><section class="bottom-cta"><div><h3>Vamos falar sobre patinagem?</h3><p>Contacta o clube para pedir informação sobre treinos, inscrições e iniciação à modalidade.</p></div><a class="site-cta" href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Entrar em contacto <span class="arrow">↗</span></a></section>
 <footer class="site-footer"><strong>Clube Araújo Patinagem Artística</strong><span>Website conceptual · Conteúdo por confirmar</span><a href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Facebook ↗</a></footer>
@@ -417,9 +444,22 @@
 </section><section class="section contact-section" id="sp-contactos">
 <div class="section-head"><div><span class="kicker">Contactos</span><h3>Começamos por uma conversa.</h3></div><p>Queres experimentar a patinagem artística ou saber qual o grupo mais adequado? Fala diretamente com o Clube Araújo.</p></div>
 <div class="contact-grid">
-<article class="contact-card"><div><span class="contact-label">01 / Email</span><h4>Escreve-nos</h4><p>Para informações sobre inscrições, treinos e primeira aula.</p></div><a href="mailto:capa_2006@sapo.pt?subject=Informações%20—%20Clube%20Araújo">capa_2006@sapo.pt ↗</a></article>
-<article class="contact-card"><div><span class="contact-label">02 / Localização</span><h4>Visita-nos na pista</h4><p>Pavilhão Desportivo Municipal de Leça do Balio · Rua D. Frei Aires, 38, Matosinhos.</p></div><a href="https://www.google.com/maps/search/?api=1&amp;query=Pavilhao+Desportivo+Municipal+Leca+do+Balio+Rua+D+Frei+Aires" rel="noopener" target="_blank">Abrir Google Maps ↗</a></article>
-<article class="contact-card"><div><span class="contact-label">03 / Redes sociais</span><h4>Acompanha o clube</h4><p>Publicações, eventos e novidades na página oficial.</p></div><a href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Facebook oficial ↗</a></article>
+<article class="contact-card">
+  <div class="contact-card-top"><span class="contact-label">01 / Email</span><h4>Email</h4></div>
+  <div class="contact-line"><span class="contact-value">capa_2006@sapo.pt</span><button type="button" class="copy-icon-btn" aria-label="Copiar email" title="Copiar email" onclick="copyValue('capa_2006@sapo.pt','Email copiado')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+</article>
+<article class="contact-card">
+  <div class="contact-card-top"><span class="contact-label">02 / Localização</span><h4>Pavilhão</h4></div>
+  <div class="contact-line"><span class="contact-value">Pavilhão Desportivo Municipal de Leça do Balio, Rua D. Frei Aires, 38, Matosinhos</span><button type="button" class="copy-icon-btn" aria-label="Copiar morada" title="Copiar morada" onclick="copyValue('Pavilhão Desportivo Municipal de Leça do Balio, Rua D. Frei Aires, 38, Matosinhos','Morada copiada')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+</article>
+<article class="contact-card">
+  <div class="contact-card-top"><span class="contact-label">03 / Facebook</span><h4>Segue o clube</h4></div>
+  <div class="contact-line"><a class="social-contact-link" href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank"><svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.019 4.388 11.002 10.125 11.854v-8.385H7.078v-3.469h3.047V9.429c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.236 2.686.236v2.953H15.83c-1.491 0-1.955.931-1.955 1.887v2.264h3.328l-.532 3.469h-2.796v8.385C19.612 23.075 24 18.092 24 12.073z"/></svg><span>Clube Araújo</span></a><button type="button" class="copy-icon-btn" aria-label="Copiar link do Facebook" title="Copiar link do Facebook" onclick="copyValue('https://www.facebook.com/ClubeAraujoPA/','Link do Facebook copiado')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+</article>
+<article class="contact-card">
+  <div class="contact-card-top"><span class="contact-label">04 / Instagram</span><h4>Acompanha-nos</h4></div>
+  <div class="contact-line"><a class="social-contact-link" href="https://www.instagram.com/clubearaujo.patinagem/" rel="noopener" target="_blank"><svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.7" r=".8" fill="currentColor" stroke="none"/></svg><span>@Clubearaujo.patinagem</span></a><button type="button" class="copy-icon-btn" aria-label="Copiar Instagram" title="Copiar Instagram" onclick="copyValue('@Clubearaujo.patinagem','Instagram copiado')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+</article>
 </div>
 </section><section class="bottom-cta"><div><h3>Pronto para começar?</h3><p>Pede informações sobre a modalidade, os treinos e as inscrições.</p></div><a class="site-cta" href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Contactar o clube <span class="arrow">↗</span></a></section>
 <footer class="site-footer"><strong>Clube Araújo Patinagem Artística</strong><span>Website conceptual · Conteúdo por confirmar</span><a href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Facebook ↗</a></footer>
@@ -450,9 +490,22 @@
 </section><section class="section contact-section" id="ar-contactos">
 <div class="section-head"><div><span class="kicker">Contactos</span><h3>Começamos por uma conversa.</h3></div><p>Queres experimentar a patinagem artística ou saber qual o grupo mais adequado? Fala diretamente com o Clube Araújo.</p></div>
 <div class="contact-grid">
-<article class="contact-card"><div><span class="contact-label">01 / Email</span><h4>Escreve-nos</h4><p>Para informações sobre inscrições, treinos e primeira aula.</p></div><a href="mailto:capa_2006@sapo.pt?subject=Informações%20—%20Clube%20Araújo">capa_2006@sapo.pt ↗</a></article>
-<article class="contact-card"><div><span class="contact-label">02 / Localização</span><h4>Visita-nos na pista</h4><p>Pavilhão Desportivo Municipal de Leça do Balio · Rua D. Frei Aires, 38, Matosinhos.</p></div><a href="https://www.google.com/maps/search/?api=1&amp;query=Pavilhao+Desportivo+Municipal+Leca+do+Balio+Rua+D+Frei+Aires" rel="noopener" target="_blank">Abrir Google Maps ↗</a></article>
-<article class="contact-card"><div><span class="contact-label">03 / Redes sociais</span><h4>Acompanha o clube</h4><p>Publicações, eventos e novidades na página oficial.</p></div><a href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Facebook oficial ↗</a></article>
+<article class="contact-card">
+  <div class="contact-card-top"><span class="contact-label">01 / Email</span><h4>Email</h4></div>
+  <div class="contact-line"><span class="contact-value">capa_2006@sapo.pt</span><button type="button" class="copy-icon-btn" aria-label="Copiar email" title="Copiar email" onclick="copyValue('capa_2006@sapo.pt','Email copiado')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+</article>
+<article class="contact-card">
+  <div class="contact-card-top"><span class="contact-label">02 / Localização</span><h4>Pavilhão</h4></div>
+  <div class="contact-line"><span class="contact-value">Pavilhão Desportivo Municipal de Leça do Balio, Rua D. Frei Aires, 38, Matosinhos</span><button type="button" class="copy-icon-btn" aria-label="Copiar morada" title="Copiar morada" onclick="copyValue('Pavilhão Desportivo Municipal de Leça do Balio, Rua D. Frei Aires, 38, Matosinhos','Morada copiada')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+</article>
+<article class="contact-card">
+  <div class="contact-card-top"><span class="contact-label">03 / Facebook</span><h4>Segue o clube</h4></div>
+  <div class="contact-line"><a class="social-contact-link" href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank"><svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.019 4.388 11.002 10.125 11.854v-8.385H7.078v-3.469h3.047V9.429c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.236 2.686.236v2.953H15.83c-1.491 0-1.955.931-1.955 1.887v2.264h3.328l-.532 3.469h-2.796v8.385C19.612 23.075 24 18.092 24 12.073z"/></svg><span>Clube Araújo</span></a><button type="button" class="copy-icon-btn" aria-label="Copiar link do Facebook" title="Copiar link do Facebook" onclick="copyValue('https://www.facebook.com/ClubeAraujoPA/','Link do Facebook copiado')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+</article>
+<article class="contact-card">
+  <div class="contact-card-top"><span class="contact-label">04 / Instagram</span><h4>Acompanha-nos</h4></div>
+  <div class="contact-line"><a class="social-contact-link" href="https://www.instagram.com/clubearaujo.patinagem/" rel="noopener" target="_blank"><svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.7" r=".8" fill="currentColor" stroke="none"/></svg><span>@Clubearaujo.patinagem</span></a><button type="button" class="copy-icon-btn" aria-label="Copiar Instagram" title="Copiar Instagram" onclick="copyValue('@Clubearaujo.patinagem','Instagram copiado')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+</article>
 </div>
 </section><section class="bottom-cta"><div><h3>Vem descobrir a patinagem artística.</h3><p>Fala com o clube para saber como começar e que opções existem.</p></div><a class="site-cta" href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Falar com o clube <span class="arrow">↗</span></a></section>
 <footer class="site-footer"><strong>Clube Araújo Patinagem Artística</strong><span>Website conceptual · Conteúdo por confirmar</span><a href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Facebook ↗</a></footer>
@@ -491,9 +544,22 @@
 </section><section class="section contact-section" id="ov-contactos">
 <div class="section-head"><div><span class="kicker">Contactos</span><h3>Começamos por uma conversa.</h3></div><p>Queres experimentar a patinagem artística ou saber qual o grupo mais adequado? Fala diretamente com o Clube Araújo.</p></div>
 <div class="contact-grid">
-<article class="contact-card"><div><span class="contact-label">01 / Email</span><h4>Escreve-nos</h4><p>Para informações sobre inscrições, treinos e primeira aula.</p></div><a href="mailto:capa_2006@sapo.pt?subject=Informações%20—%20Clube%20Araújo">capa_2006@sapo.pt ↗</a></article>
-<article class="contact-card"><div><span class="contact-label">02 / Localização</span><h4>Visita-nos na pista</h4><p>Pavilhão Desportivo Municipal de Leça do Balio · Rua D. Frei Aires, 38, Matosinhos.</p></div><a href="https://www.google.com/maps/search/?api=1&amp;query=Pavilhao+Desportivo+Municipal+Leca+do+Balio+Rua+D+Frei+Aires" rel="noopener" target="_blank">Abrir Google Maps ↗</a></article>
-<article class="contact-card"><div><span class="contact-label">03 / Redes sociais</span><h4>Acompanha o clube</h4><p>Publicações, eventos e novidades na página oficial.</p></div><a href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Facebook oficial ↗</a></article>
+<article class="contact-card">
+  <div class="contact-card-top"><span class="contact-label">01 / Email</span><h4>Email</h4></div>
+  <div class="contact-line"><span class="contact-value">capa_2006@sapo.pt</span><button type="button" class="copy-icon-btn" aria-label="Copiar email" title="Copiar email" onclick="copyValue('capa_2006@sapo.pt','Email copiado')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+</article>
+<article class="contact-card">
+  <div class="contact-card-top"><span class="contact-label">02 / Localização</span><h4>Pavilhão</h4></div>
+  <div class="contact-line"><span class="contact-value">Pavilhão Desportivo Municipal de Leça do Balio, Rua D. Frei Aires, 38, Matosinhos</span><button type="button" class="copy-icon-btn" aria-label="Copiar morada" title="Copiar morada" onclick="copyValue('Pavilhão Desportivo Municipal de Leça do Balio, Rua D. Frei Aires, 38, Matosinhos','Morada copiada')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+</article>
+<article class="contact-card">
+  <div class="contact-card-top"><span class="contact-label">03 / Facebook</span><h4>Segue o clube</h4></div>
+  <div class="contact-line"><a class="social-contact-link" href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank"><svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.019 4.388 11.002 10.125 11.854v-8.385H7.078v-3.469h3.047V9.429c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.236 2.686.236v2.953H15.83c-1.491 0-1.955.931-1.955 1.887v2.264h3.328l-.532 3.469h-2.796v8.385C19.612 23.075 24 18.092 24 12.073z"/></svg><span>Clube Araújo</span></a><button type="button" class="copy-icon-btn" aria-label="Copiar link do Facebook" title="Copiar link do Facebook" onclick="copyValue('https://www.facebook.com/ClubeAraujoPA/','Link do Facebook copiado')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+</article>
+<article class="contact-card">
+  <div class="contact-card-top"><span class="contact-label">04 / Instagram</span><h4>Acompanha-nos</h4></div>
+  <div class="contact-line"><a class="social-contact-link" href="https://www.instagram.com/clubearaujo.patinagem/" rel="noopener" target="_blank"><svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.7" r=".8" fill="currentColor" stroke="none"/></svg><span>@Clubearaujo.patinagem</span></a><button type="button" class="copy-icon-btn" aria-label="Copiar Instagram" title="Copiar Instagram" onclick="copyValue('@Clubearaujo.patinagem','Instagram copiado')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+</article>
 </div>
 </section><section class="bottom-cta"><div><h3>Vamos pôr o movimento em marcha?</h3><p>Contacta o clube para saber mais sobre a patinagem artística, os treinos e as formas de participação.</p></div><a class="site-cta" href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Entrar em contacto <span class="arrow">↗</span></a></section>
 <footer class="site-footer"><strong>Clube Araújo Patinagem Artística</strong><span>Website conceptual · Conteúdo por confirmar</span><a href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Facebook ↗</a></footer>
@@ -590,12 +656,7 @@
             Representação oficial na Associação de Patinagem do Porto (APP) e Federação de Patinagem de Portugal (FPP).
           </p>
 </div>
-<div class="flex items-center gap-2">
-<button class="bg-white hover:bg-oviax-lime text-oviax-dark font-display font-bold text-xs px-5 py-3.5 rounded-full shadow-lg transition flex items-center gap-2" onclick="copyValue('capa_2006@sapo.pt', 'Email copiado: capa_2006@sapo.pt')">
-<span>✉️ capa_2006@sapo.pt</span>
-<span class="text-[10px] bg-black/10 px-2 py-0.5 rounded-full">Copiar</span>
-</button>
-</div>
+
 </div>
 </div>
 </section><!-- =====================================================================
@@ -929,7 +990,34 @@
 </section><!-- =====================================================================
        OVIAX SECTION 08: GIANT CTA & DIRECT CONTACT HUB (ZERO FORMS)
        ===================================================================== --><footer class="bg-oviax-dark text-white pt-20 pb-12 rounded-t-[40px] sm:rounded-t-[56px]" id="capa5-contactos">
-<div class="bg-[#121613] border border-white/10 hover:border-oviax-lime/60 rounded-[28px] p-7 flex flex-col justify-between transition"><div><div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-oviax-lime"><span>[02] Facebook oficial</span><span>↗</span></div><p class="font-display font-bold text-2xl text-white mt-5">Fala connosco diretamente</p><p class="text-xs text-neutral-400 mt-2">Envia-nos uma mensagem pela página oficial para esclarecer dúvidas sobre inscrições e horários.</p></div><div class="mt-8 flex gap-2.5"><a class="flex-1 bg-white hover:bg-neutral-200 text-oviax-dark font-display font-bold text-xs uppercase tracking-wider py-3.5 px-4 rounded-full text-center transition" href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Abrir Facebook ↗</a></div></div>
+<div class="mx-auto max-w-7xl px-6 sm:px-10">
+  <div class="grid lg:grid-cols-[0.72fr_1.28fr] gap-10 lg:gap-16">
+    <div class="max-w-md">
+      <span class="text-xs font-bold uppercase tracking-[0.22em] text-oviax-lime">Contactos</span>
+      <h3 class="font-display font-extrabold text-4xl sm:text-5xl leading-[0.98] tracking-tight mt-5">Fala connosco.</h3>
+      <p class="text-sm text-neutral-400 leading-relaxed mt-5">Informações sobre inscrições, treinos e localização do pavilhão. Encontra o Clube Araújo nas redes sociais.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-3 sm:gap-4">
+      <article class="rounded-3xl border border-white/10 bg-white/[0.035] p-5 sm:p-6">
+        <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-oviax-lime">01 / Email</span>
+        <div class="mt-5 flex items-center justify-between gap-3"><span class="text-sm font-semibold break-all">capa_2006@sapo.pt</span><button type="button" class="copy-icon-btn-5" aria-label="Copiar email" title="Copiar email" onclick="copyValue('capa_2006@sapo.pt','Email copiado')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+      </article>
+      <article class="rounded-3xl border border-white/10 bg-white/[0.035] p-5 sm:p-6">
+        <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-oviax-lime">02 / Localização</span>
+        <div class="mt-5 flex items-center justify-between gap-3"><span class="text-xs leading-relaxed text-neutral-200">Pavilhão Desportivo Municipal de Leça do Balio, Rua D. Frei Aires, 38, Matosinhos</span><button type="button" class="copy-icon-btn-5" aria-label="Copiar morada" title="Copiar morada" onclick="copyValue('Pavilhão Desportivo Municipal de Leça do Balio, Rua D. Frei Aires, 38, Matosinhos','Morada copiada')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+      </article>
+      <article class="rounded-3xl border border-white/10 bg-white/[0.035] p-5 sm:p-6">
+        <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-oviax-lime">03 / Facebook</span>
+        <div class="mt-5 flex items-center justify-between gap-3"><a class="inline-flex items-center gap-3 text-sm font-semibold hover:text-oviax-lime transition" href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank"><svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.019 4.388 11.002 10.125 11.854v-8.385H7.078v-3.469h3.047V9.429c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.236 2.686.236v2.953H15.83c-1.491 0-1.955.931-1.955 1.887v2.264h3.328l-.532 3.469h-2.796v8.385C19.612 23.075 24 18.092 24 12.073z"/></svg><span>Clube Araújo</span></a><button type="button" class="copy-icon-btn-5" aria-label="Copiar link do Facebook" title="Copiar link do Facebook" onclick="copyValue('https://www.facebook.com/ClubeAraujoPA/','Link do Facebook copiado')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+      </article>
+      <article class="rounded-3xl border border-white/10 bg-white/[0.035] p-5 sm:p-6">
+        <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-oviax-lime">04 / Instagram</span>
+        <div class="mt-5 flex items-center justify-between gap-3"><a class="inline-flex items-center gap-3 text-sm font-semibold hover:text-oviax-lime transition min-w-0" href="https://www.instagram.com/clubearaujo.patinagem/" rel="noopener" target="_blank"><svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.7" r=".8" fill="currentColor" stroke="none"/></svg><span class="break-all">@Clubearaujo.patinagem</span></a><button type="button" class="copy-icon-btn-5" aria-label="Copiar Instagram" title="Copiar Instagram" onclick="copyValue('@Clubearaujo.patinagem','Instagram copiado')"><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div>
+      </article>
+    </div>
+  </div>
+  <div class="mt-14 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-[10px] uppercase tracking-[0.16em] text-neutral-500"><span>Clube Araújo Patinagem Artística</span><span>Patinagem · Comunidade · Movimento</span></div>
+</div>
 </footer></main></div>
 </div>
 <script>
@@ -995,23 +1083,29 @@
       : 'w-8 h-8 rounded-full bg-black/5 text-oviax-dark flex items-center justify-center font-bold shrink-0';
   }
 
-  function copyValue(val, msg) {
-    const root = document.getElementById('capa5');    if (!root) return;
-    const textarea = document.createElement('textarea');
-    textarea.value = val;
-    textarea.setAttribute('readonly', '');
-    textarea.style.position = 'fixed';
-    textarea.style.opacity = '0';
-    document.body.appendChild(textarea);
-    textarea.select();
-    try { document.execCommand('copy'); } catch (_) {}
-    textarea.remove();
-    const toast = root.querySelector('#copy-toast');
-    const toastMsg = root.querySelector('#toast-msg');
-    if (toast && toastMsg) {
-      toastMsg.textContent = msg;
-      toast.classList.remove('hidden');
-      window.setTimeout(() => toast.classList.add('hidden'), 3000);
+  async function copyValue(val, msg) {
+    let copied = false;
+    if (navigator.clipboard && window.isSecureContext) {
+      try { await navigator.clipboard.writeText(val); copied = true; } catch (_) {}
+    }
+    if (!copied) {
+      const textarea = document.createElement('textarea');
+      textarea.value = val;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'fixed';
+      textarea.style.left = '-9999px';
+      textarea.style.top = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try { copied = document.execCommand('copy'); } catch (_) {}
+      textarea.remove();
+    }
+    const toast = document.getElementById('global-copy-toast');
+    if (toast) {
+      toast.textContent = copied ? (msg || 'Copiado.') : 'Não foi possível copiar automaticamente.';
+      toast.classList.add('visible');
+      window.clearTimeout(window.__clubCopyTimer);
+      window.__clubCopyTimer = window.setTimeout(() => toast.classList.remove('visible'), 2400);
     }
   }
 </script>
