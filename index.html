@@ -16,10 +16,10 @@
   button{font:inherit}
   .showcase{max-width:1480px;margin:0 auto;padding:14px 28px 22px}
   .design-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:0 0 18px}
-  .design-tab{appearance:none;text-align:left;cursor:pointer;border:1px solid #d8d5d0;background:#f8f7f4;border-radius:12px;padding:15px 17px;color:#1c1c1c;transition:border-color .2s,background .2s,transform .2s;min-height:83px}
+  .design-tab{appearance:none;text-align:center;cursor:pointer;border:1px solid #d8d5d0;background:#f8f7f4;border-radius:12px;padding:14px 10px;color:#1c1c1c;transition:border-color .2s,background .2s,transform .2s;min-height:54px;display:flex;align-items:center;justify-content:center}
   .design-tab:hover{transform:translateY(-1px);border-color:#8d8981}
   .design-tab[aria-pressed="true"]{border-color:#222;background:#222;color:#fff}
-  .tab-num{display:block;font-size:10px;letter-spacing:.16em;font-weight:700;opacity:.65;margin-bottom:7px}
+  .tab-num{display:block;text-align:center;font-size:22px;line-height:1;font-weight:800;letter-spacing:0;opacity:.95;margin:0}
   .tab-title{display:block;font-size:15px;font-weight:700;margin-bottom:3px}
   .tab-sub{display:block;font-size:12px;opacity:.72}
   .preview-meta{display:flex;justify-content:space-between;align-items:center;gap:14px;color:#777;font-size:11px;letter-spacing:.03em;margin:0 2px 12px}
@@ -339,15 +339,16 @@
 #capa5 .service-row h3{letter-spacing:-.04em}
 @media(max-width:1023px){#capa5 header nav{display:none!important}}
 </style>
-<script>tailwind.config = { corePlugins: { preflight: false }, theme: { extend: { fontFamily: { display: ['Manrope', 'sans-serif'], syne: ['Manrope', 'sans-serif'], serif: ['DM Serif Display', 'serif'], sans: ['DM Sans', 'sans-serif'] }, colors: { oviax: { dark: '#0A0B0A', card: '#121513', light: '#F6F6F3', white: '#FFFFFF', borderDark: 'rgba(255, 255, 255, 0.1)', borderLight: 'rgba(10, 11, 10, 0.1)', green: '#1E7A3B', gold: '#E5B822' } } } } };</script><script src="https://cdn.tailwindcss.com"></script></head>
+<script>tailwind.config = { corePlugins: { preflight: false }, theme: { extend: { fontFamily: { display: ['Manrope', 'sans-serif'], syne: ['Manrope', 'sans-serif'], serif: ['DM Serif Display', 'serif'], sans: ['DM Sans', 'sans-serif'] }, colors: { oviax: { dark: '#0A0B0A', card: '#121513', light: '#F6F6F3', white: '#FFFFFF', borderDark: 'rgba(255, 255, 255, 0.1)', borderLight: 'rgba(10, 11, 10, 0.1)', green: '#1E7A3B', lime: '#A7CE54' } } } } };</script><script src="https://cdn.tailwindcss.com"></script></head>
 <body>
 <div class="showcase">
 <div aria-label="Escolher proposta de design" class="design-tabs" role="group">
-<button aria-pressed="true" class="design-tab" data-target="editorial" type="button"><span class="tab-num">01 / ELEGÂNCIA</span><span class="tab-title">Editorial premium</span><span class="tab-sub">Revista · contraste · sofisticação</span></button>
-<button aria-pressed="false" class="design-tab" data-target="performance" type="button"><span class="tab-num">02 / ENERGIA</span><span class="tab-title">Desportivo</span><span class="tab-sub">Ação · competição · impacto</span></button>
-<button aria-pressed="false" class="design-tab" data-target="artistic" type="button"><span class="tab-num">03 / EXPRESSÃO</span><span class="tab-title">Arte em movimento</span><span class="tab-sub">Cultura · delicadeza · movimento</span></button>
-<button aria-pressed="false" class="design-tab" data-target="oviax" type="button"><span class="tab-num">04 / PORTFÓLIO</span><span class="tab-title">Showcase contemporâneo</span><span class="tab-sub">Tipografia · grelha · interação</span></button>
-<button aria-pressed="false" class="design-tab" data-target="capa5" type="button"><span class="tab-num">05 / IDENTIDADE</span><span class="tab-title">Oviax · edição CAPA</span><span class="tab-sub">Design do anexo · grelha e tipografia</span></button></div>
+<button aria-label="Opção 1" aria-pressed="true" class="design-tab" data-target="editorial" type="button"><span class="tab-num">1</span></button>
+<button aria-label="Opção 2" aria-pressed="false" class="design-tab" data-target="performance" type="button"><span class="tab-num">2</span></button>
+<button aria-label="Opção 3" aria-pressed="false" class="design-tab" data-target="artistic" type="button"><span class="tab-num">3</span></button>
+<button aria-label="Opção 4" aria-pressed="false" class="design-tab" data-target="oviax" type="button"><span class="tab-num">4</span></button>
+<button aria-label="Opção 5" aria-pressed="false" class="design-tab" data-target="capa5" type="button"><span class="tab-num">5</span></button>
+</div>
 <div class="preview-meta"><span class="preview-label"><span class="live-dot"></span><span id="preview-status">A pré-visualizar: Editorial premium</span></span><span>PRÉ-VISUALIZAÇÃO RESPONSIVA · DESLIZA PARA EXPLORAR</span></div>
 <div class="website">
 <!-- DESIGN 01: EDITORIAL PREMIUM -->
@@ -497,8 +498,8 @@
 </section><section class="bottom-cta"><div><h3>Vamos pôr o movimento em marcha?</h3><p>Contacta o clube para saber mais sobre a patinagem artística, os treinos e as formas de participação.</p></div><a class="site-cta" href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Entrar em contacto <span class="arrow">↗</span></a></section>
 <footer class="site-footer"><strong>Clube Araújo Patinagem Artística</strong><span>Website conceptual · Conteúdo por confirmar</span><a href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Facebook ↗</a></footer>
 </main>
-<main aria-hidden="true" aria-label="Proposta 5 — Oviax contemporâneo" class="concept" id="capa5"><!-- Toast Feedback --><div class="fixed bottom-6 right-6 z-50 hidden bg-oviax-dark text-white border border-oviax-gold px-5 py-3.5 rounded-full shadow-2xl text-xs font-semibold flex items-center gap-3" id="copy-toast">
-<span class="w-5 h-5 rounded-full bg-oviax-gold text-oviax-dark flex items-center justify-center font-bold">✓</span>
+<main aria-hidden="true" aria-label="Proposta 5 — Oviax contemporâneo" class="concept" id="capa5"><!-- Toast Feedback --><div class="fixed bottom-6 right-6 z-50 hidden bg-oviax-dark text-white border border-oviax-lime px-5 py-3.5 rounded-full shadow-2xl text-xs font-semibold flex items-center gap-3" id="copy-toast">
+<span class="w-5 h-5 rounded-full bg-oviax-lime text-oviax-dark flex items-center justify-center font-bold">✓</span>
 <span id="toast-msg">Copiado com sucesso!</span>
 </div><!-- =====================================================================
        OVIAX SECTION 01: HEADER / NAVBAR
@@ -524,7 +525,7 @@
 <!-- Right: Oviax Signature Pill Button with Circle Arrow -->
 <a class="group bg-oviax-dark hover:bg-oviax-green text-white pl-5 pr-2 py-2 rounded-full inline-flex items-center gap-3 text-xs font-semibold transition-all duration-300" href="#capa5-contactos">
 <span>1.ª Aula Grátis</span>
-<span class="w-7 h-7 rounded-full bg-oviax-gold text-oviax-dark flex items-center justify-center font-bold group-hover:rotate-45 transition-transform duration-300">↗</span>
+<span class="w-7 h-7 rounded-full bg-oviax-lime text-oviax-dark flex items-center justify-center font-bold group-hover:rotate-45 transition-transform duration-300">↗</span>
 </a>
 </div>
 </header><nav aria-label="Navegação rápida" class="design-mobile-nav"><a href="#sobre">O clube</a><a href="#capa5-horarios">Horários</a><a href="#capa5-contactos">Contactos</a></nav><!-- =====================================================================
@@ -547,9 +548,7 @@
 <div class="py-10 sm:py-14">
 <h1 class="font-display font-extrabold text-[42px] sm:text-[68px] lg:text-[88px] leading-[0.98] tracking-[-0.03em] text-oviax-dark">
         PATINAGEM
-        <span class="inline-flex items-center align-middle mx-1 sm:mx-3 w-20 sm:w-36 h-10 sm:h-16 rounded-full overflow-hidden border-2 border-oviax-green shadow-md">
-<img alt="CAPA" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOFBI6g8g2GrEb5iMMihZy3TzmkCH1vDsQSmouXzfoQqe-FFTHe_90pE6uGrAqStF8cS7Yp4WoObhI-WW5ff_qpMTT7G1_snl9-9vjI9Gn82SqHL3eWaxgJ7t4kD3WXgw4rFA3s1SE6NEJHUBbgiHX0mktyet6Muc6EpV9JFQpmoOoOAsdZFpsB6JZDJd6-b7x3eJYUzkMOWyp8CsLVT21iQcwJ1V5-EoNKwly-bFLfXAfKv2yQZwWk78ZkNUhDY4ppZE"/>
-</span>
+        <span aria-label="Clube Araújo" class="inline-flex items-center justify-center align-middle mx-1 sm:mx-3 w-20 sm:w-36 h-10 sm:h-16 rounded-full bg-oviax-green text-white font-display font-extrabold text-xs sm:text-base tracking-[0.16em] shadow-md">CAPA</span>
         ARTÍSTICA <span class="font-serif italic font-normal text-oviax-green">de Excelência</span> EM LEÇA DO BALIO.
       </h1>
 <!-- Sub-row under Giant Heading (Oviax 2-Column Split) -->
@@ -570,7 +569,7 @@
           </p>
 <a class="group bg-oviax-green hover:bg-oviax-dark text-white pl-6 pr-2.5 py-3 rounded-full inline-flex items-center gap-4 text-xs font-bold uppercase tracking-wider shrink-0 transition-all duration-300 shadow-lg shadow-oviax-green/20" href="#capa5-contactos">
 <span>Contactos Diretos</span>
-<span class="w-8 h-8 rounded-full bg-oviax-gold text-oviax-dark flex items-center justify-center text-sm group-hover:rotate-45 transition-transform">↗</span>
+<span class="w-8 h-8 rounded-full bg-oviax-lime text-oviax-dark flex items-center justify-center text-sm group-hover:rotate-45 transition-transform">↗</span>
 </a>
 </div>
 </div>
@@ -582,7 +581,7 @@
 <!-- Floating Bottom Bar inside Hero Image (Oviax Style) -->
 <div class="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 right-4 sm:right-8 flex flex-wrap items-end justify-between gap-4">
 <div class="bg-black/65 backdrop-blur-md border border-white/15 rounded-2xl p-4 sm:p-5 text-white max-w-lg">
-<div class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-oviax-gold mb-1">
+<div class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-oviax-lime mb-1">
 <span>● Pavilhão Municipal de Leça do Balio</span>
 <span>•</span>
 <span>#SOMOSCAPA</span>
@@ -592,7 +591,7 @@
           </p>
 </div>
 <div class="flex items-center gap-2">
-<button class="bg-white hover:bg-oviax-gold text-oviax-dark font-display font-bold text-xs px-5 py-3.5 rounded-full shadow-lg transition flex items-center gap-2" onclick="copyValue('capa_2006@sapo.pt', 'Email copiado: capa_2006@sapo.pt')">
+<button class="bg-white hover:bg-oviax-lime text-oviax-dark font-display font-bold text-xs px-5 py-3.5 rounded-full shadow-lg transition flex items-center gap-2" onclick="copyValue('capa_2006@sapo.pt', 'Email copiado: capa_2006@sapo.pt')">
 <span>✉️ capa_2006@sapo.pt</span>
 <span class="text-[10px] bg-black/10 px-2 py-0.5 rounded-full">Copiar</span>
 </button>
@@ -603,18 +602,18 @@
        OVIAX SECTION 03: INFINITE LOGO / TEXT MARQUEE STRIP
        ===================================================================== --><div class="bg-oviax-dark text-white py-5 border-y border-black/10 overflow-hidden">
 <div class="animate-marquee flex items-center gap-12 text-xs sm:text-sm font-display font-bold uppercase tracking-[0.18em]">
-<span class="flex items-center gap-3"><span class="text-oviax-gold text-lg">✺</span> CLUBE ARAÚJO DE PATINAGEM ARTÍSTICA</span>
+<span class="flex items-center gap-3"><span class="text-oviax-lime text-lg">✺</span> CLUBE ARAÚJO DE PATINAGEM ARTÍSTICA</span>
 <span class="flex items-center gap-3"><span class="text-oviax-green text-lg">✺</span> FUNDADO EM 2006 EM LEÇA DO BALIO</span>
-<span class="flex items-center gap-3"><span class="text-oviax-gold text-lg">✺</span> 1.ª AULA EXPERIMENTAL GRATUITA</span>
+<span class="flex items-center gap-3"><span class="text-oviax-lime text-lg">✺</span> 1.ª AULA EXPERIMENTAL GRATUITA</span>
 <span class="flex items-center gap-3"><span class="text-oviax-green text-lg">✺</span> EMPRESTAMOS OS PATINS INICIAIS</span>
-<span class="flex items-center gap-3"><span class="text-oviax-gold text-lg">✺</span> PATINAGEM LIVRE &amp; SOLO DANCE</span>
+<span class="flex items-center gap-3"><span class="text-oviax-lime text-lg">✺</span> PATINAGEM LIVRE &amp; SOLO DANCE</span>
 <span class="flex items-center gap-3"><span class="text-oviax-green text-lg">✺</span> #SOMOSCAPA</span>
 <!-- Duplicate for seamless loop -->
-<span class="flex items-center gap-3"><span class="text-oviax-gold text-lg">✺</span> CLUBE ARAÚJO DE PATINAGEM ARTÍSTICA</span>
+<span class="flex items-center gap-3"><span class="text-oviax-lime text-lg">✺</span> CLUBE ARAÚJO DE PATINAGEM ARTÍSTICA</span>
 <span class="flex items-center gap-3"><span class="text-oviax-green text-lg">✺</span> FUNDADO EM 2006 EM LEÇA DO BALIO</span>
-<span class="flex items-center gap-3"><span class="text-oviax-gold text-lg">✺</span> 1.ª AULA EXPERIMENTAL GRATUITA</span>
+<span class="flex items-center gap-3"><span class="text-oviax-lime text-lg">✺</span> 1.ª AULA EXPERIMENTAL GRATUITA</span>
 <span class="flex items-center gap-3"><span class="text-oviax-green text-lg">✺</span> EMPRESTAMOS OS PATINS INICIAIS</span>
-<span class="flex items-center gap-3"><span class="text-oviax-gold text-lg">✺</span> PATINAGEM LIVRE &amp; SOLO DANCE</span>
+<span class="flex items-center gap-3"><span class="text-oviax-lime text-lg">✺</span> PATINAGEM LIVRE &amp; SOLO DANCE</span>
 </div>
 </div><!-- =====================================================================
        OVIAX SECTION 04: ABOUT & 4-COUNTER BENTO GRID (01 // SOBRE NÓS)
@@ -651,7 +650,7 @@
 <div class="bg-white border border-black/10 rounded-[28px] p-8 flex flex-col justify-between min-h-[230px] shadow-sm hover:shadow-md transition">
 <div class="flex items-center justify-between text-xs font-semibold text-neutral-400 uppercase tracking-wider">
 <span>02 / Iniciação</span>
-<span class="w-2 h-2 rounded-full bg-oviax-gold"></span>
+<span class="w-2 h-2 rounded-full bg-oviax-lime"></span>
 </div>
 <div>
 <span class="font-display font-extrabold text-5xl sm:text-6xl text-oviax-green tracking-tight block">3+ <span class="text-2xl font-bold">Anos</span></span>
@@ -669,12 +668,12 @@
 </div>
 </div>
 <div class="bg-oviax-dark text-white rounded-[28px] p-8 flex flex-col justify-between min-h-[230px] shadow-lg">
-<div class="flex items-center justify-between text-xs font-semibold text-oviax-gold uppercase tracking-wider">
+<div class="flex items-center justify-between text-xs font-semibold text-oviax-lime uppercase tracking-wider">
 <span>04 / Aula Experimental</span>
 <span>🛼</span>
 </div>
 <div>
-<span class="font-display font-extrabold text-5xl sm:text-6xl text-oviax-gold tracking-tight block">100%</span>
+<span class="font-display font-extrabold text-5xl sm:text-6xl text-oviax-lime tracking-tight block">100%</span>
 <p class="text-xs sm:text-sm text-neutral-300 mt-2 font-medium">Gratuita na 1.ª sessão e com patins emprestados pelo clube.</p>
 </div>
 </div>
@@ -747,7 +746,7 @@
         </div>
 <div class="lg:col-span-2 flex flex-wrap gap-1.5">
 <span class="px-3 py-1 rounded-full bg-black/5 text-xs font-semibold text-oviax-dark">2.ª a 6.ª feira</span>
-<span class="px-3 py-1 rounded-full bg-oviax-gold/30 text-xs font-bold text-oviax-dark">19:30–21:30</span>
+<span class="px-3 py-1 rounded-full bg-oviax-lime/30 text-xs font-bold text-oviax-dark">19:30–21:30</span>
 </div>
 <div class="lg:col-span-1 flex lg:justify-end">
 <a class="arrow-btn w-12 h-12 rounded-full border border-black/15 flex items-center justify-center text-lg font-bold" href="#capa5-contactos">↗</a>
@@ -779,17 +778,17 @@
 <!-- Oviax Dark Header -->
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 pb-8 border-b border-white/10">
 <div>
-<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-bold uppercase tracking-wider text-oviax-gold mb-4">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-bold uppercase tracking-wider text-oviax-lime mb-4">
 <span>(03)</span>
 <span>Destaques &amp; Pista</span>
 </div>
 <h2 class="font-display font-extrabold text-4xl sm:text-6xl tracking-tight">
-            PALCO &amp; <span class="font-serif italic font-normal text-oviax-gold">Conquistas</span>
+            PALCO &amp; <span class="font-serif italic font-normal text-oviax-lime">Conquistas</span>
 </h2>
 </div>
-<a class="group bg-white/10 hover:bg-oviax-gold hover:text-oviax-dark text-white pl-5 pr-2 py-2.5 rounded-full inline-flex items-center gap-3 text-xs font-bold uppercase tracking-wider transition w-fit" href="#capa5-contactos">
+<a class="group bg-white/10 hover:bg-oviax-lime hover:text-oviax-dark text-white pl-5 pr-2 py-2.5 rounded-full inline-flex items-center gap-3 text-xs font-bold uppercase tracking-wider transition w-fit" href="#capa5-contactos">
 <span>Juntar-se à Equipa</span>
-<span class="w-7 h-7 rounded-full bg-oviax-gold text-oviax-dark flex items-center justify-center">↗</span>
+<span class="w-7 h-7 rounded-full bg-oviax-lime text-oviax-dark flex items-center justify-center">↗</span>
 </a>
 </div>
 <!-- Oviax 2-Column Case Study Cards -->
@@ -799,17 +798,17 @@
 <div class="relative rounded-[24px] overflow-hidden h-[280px] sm:h-[340px]">
 <img alt="Competição Oficial CAPA" class="project-img w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOFBI6g8g2GrEb5iMMihZy3TzmkCH1vDsQSmouXzfoQqe-FFTHe_90pE6uGrAqStF8cS7Yp4WoObhI-WW5ff_qpMTT7G1_snl9-9vjI9Gn82SqHL3eWaxgJ7t4kD3WXgw4rFA3s1SE6NEJHUBbgiHX0mktyet6Muc6EpV9JFQpmoOoOAsdZFpsB6JZDJd6-b7x3eJYUzkMOWyp8CsLVT21iQcwJ1V5-EoNKwly-bFLfXAfKv2yQZwWk78ZkNUhDY4ppZE"/>
 <div class="absolute top-4 left-4 flex gap-2">
-<span class="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[11px] font-semibold text-oviax-gold border border-white/15">APP &amp; FPP</span>
+<span class="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[11px] font-semibold text-oviax-lime border border-white/15">APP &amp; FPP</span>
 <span class="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[11px] font-semibold text-white border border-white/15">Desde 2006</span>
 </div>
 </div>
 <div class="pt-6 px-2 flex items-end justify-between gap-4">
 <div>
-<span class="text-xs font-semibold uppercase tracking-widest text-oviax-gold">Quadro Competitivo &amp; Gala Anual</span>
+<span class="text-xs font-semibold uppercase tracking-widest text-oviax-lime">Quadro Competitivo &amp; Gala Anual</span>
 <h3 class="font-display font-bold text-2xl text-white mt-1">Torneios Regionais, Nacionais e Espetáculos</h3>
 <p class="text-sm text-neutral-400 mt-2">Presença assídua nos pódios distritais e organização da tradicional Gala Anual do Clube Araújo com todos os atletas.</p>
 </div>
-<a class="w-12 h-12 rounded-full bg-white/10 group-hover:bg-oviax-gold group-hover:text-oviax-dark flex items-center justify-center font-bold shrink-0 transition" href="#capa5-contactos">↗</a>
+<a class="w-12 h-12 rounded-full bg-white/10 group-hover:bg-oviax-lime group-hover:text-oviax-dark flex items-center justify-center font-bold shrink-0 transition" href="#capa5-contactos">↗</a>
 </div>
 </div>
 <!-- Card 02: Schedule & Pavilion Interactive Bento inside Dark Section -->
@@ -817,11 +816,11 @@
 <div>
 <div class="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-white/10">
 <div>
-<span class="text-xs font-bold uppercase tracking-widest text-oviax-gold">(04) Horários Semanais</span>
+<span class="text-xs font-bold uppercase tracking-widest text-oviax-lime">(04) Horários Semanais</span>
 <h3 class="font-display font-bold text-2xl text-white mt-0.5">Quadro de Pista • Leça do Balio</h3>
 </div>
 <div class="flex gap-1.5">
-<button class="px-3 py-1 rounded-full text-xs font-bold bg-oviax-gold text-oviax-dark" id="f-all" onclick="filterSched('all')">Todos</button>
+<button class="px-3 py-1 rounded-full text-xs font-bold bg-oviax-lime text-oviax-dark" id="f-all" onclick="filterSched('all')">Todos</button>
 <button class="px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white hover:bg-white/20" id="f-ini" onclick="filterSched('ini')">Iniciação</button>
 <button class="px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white hover:bg-white/20" id="f-comp" onclick="filterSched('comp')">Competição</button>
 </div>
@@ -846,7 +845,7 @@
 <p class="font-bold text-white">Competição Oficial &amp; Solo Dance</p>
 <p class="text-xs text-neutral-400">Segunda a Sexta-feira</p>
 </div>
-<span class="px-3.5 py-1.5 rounded-full bg-oviax-gold/20 border border-oviax-gold/50 text-xs font-bold text-oviax-gold">19:30 – 21:30</span>
+<span class="px-3.5 py-1.5 rounded-full bg-oviax-lime/20 border border-oviax-lime/50 text-xs font-bold text-oviax-lime">19:30 – 21:30</span>
 </div>
 <div class="sched-row py-4 flex items-center justify-between gap-4" data-group="comp">
 <div>
@@ -859,7 +858,7 @@
 </div>
 <div class="mt-6 pt-5 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-neutral-400">
 <span>📍 Pavilhão Desportivo Municipal de Leça do Balio (Rua D. Frei Aires, 38)</span>
-<a class="text-oviax-gold font-bold hover:underline shrink-0" href="https://www.google.com/maps/search/?api=1&amp;query=Pavilhao+Desportivo+Municipal+Leca+do+Balio+Rua+D+Frei+Aires" rel="noopener" target="_blank">Abrir Google Maps ↗</a>
+<a class="text-oviax-lime font-bold hover:underline shrink-0" href="https://www.google.com/maps/search/?api=1&amp;query=Pavilhao+Desportivo+Municipal+Leca+do+Balio+Rua+D+Frei+Aires" rel="noopener" target="_blank">Abrir Google Maps ↗</a>
 </div>
 </div>
 </div>
@@ -930,7 +929,7 @@
 </section><!-- =====================================================================
        OVIAX SECTION 08: GIANT CTA & DIRECT CONTACT HUB (ZERO FORMS)
        ===================================================================== --><footer class="bg-oviax-dark text-white pt-20 pb-12 rounded-t-[40px] sm:rounded-t-[56px]" id="capa5-contactos">
-<div class="bg-[#121613] border border-white/10 hover:border-oviax-gold/60 rounded-[28px] p-7 flex flex-col justify-between transition"><div><div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-oviax-gold"><span>[02] Facebook oficial</span><span>↗</span></div><p class="font-display font-bold text-2xl text-white mt-5">Fala connosco diretamente</p><p class="text-xs text-neutral-400 mt-2">Envia-nos uma mensagem pela página oficial para esclarecer dúvidas sobre inscrições e horários.</p></div><div class="mt-8 flex gap-2.5"><a class="flex-1 bg-white hover:bg-neutral-200 text-oviax-dark font-display font-bold text-xs uppercase tracking-wider py-3.5 px-4 rounded-full text-center transition" href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Abrir Facebook ↗</a></div></div>
+<div class="bg-[#121613] border border-white/10 hover:border-oviax-lime/60 rounded-[28px] p-7 flex flex-col justify-between transition"><div><div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-oviax-lime"><span>[02] Facebook oficial</span><span>↗</span></div><p class="font-display font-bold text-2xl text-white mt-5">Fala connosco diretamente</p><p class="text-xs text-neutral-400 mt-2">Envia-nos uma mensagem pela página oficial para esclarecer dúvidas sobre inscrições e horários.</p></div><div class="mt-8 flex gap-2.5"><a class="flex-1 bg-white hover:bg-neutral-200 text-oviax-dark font-display font-bold text-xs uppercase tracking-wider py-3.5 px-4 rounded-full text-center transition" href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Abrir Facebook ↗</a></div></div>
 </footer></main></div>
 </div>
 <script>
@@ -941,7 +940,7 @@
     const buttons = [...document.querySelectorAll('.design-tab')];
     const concepts = [...document.querySelectorAll('.concept')];
     const status = document.getElementById('preview-status');
-    const names = { editorial: 'Editorial premium', performance: 'Desportivo', artistic: 'Arte em movimento', oviax: 'Showcase contemporâneo', capa5: 'Oviax · edição CAPA' };
+    const names = { editorial: 'opção 1', performance: 'opção 2', artistic: 'opção 3', oviax: 'opção 4', capa5: 'opção 5' };
     function selectConcept(id, moveFocus = false) {
       concepts.forEach((concept) => {
         const active = concept.id === id;
@@ -975,7 +974,7 @@
       const btn = root.querySelector('#f-' + g);
       if (!btn) return;
       btn.className = g === group
-        ? 'px-3 py-1 rounded-full text-xs font-bold bg-oviax-gold text-oviax-dark'
+        ? 'px-3 py-1 rounded-full text-xs font-bold bg-oviax-lime text-oviax-dark'
         : 'px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white hover:bg-white/20';
     });
     root.querySelectorAll('.sched-row').forEach((row) => {
