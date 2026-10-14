@@ -350,7 +350,34 @@
   
 #capa5 .site-header nav a[href^='#']:not([href='#']){white-space:nowrap}
 #capa5 .service-row h3{letter-spacing:-.04em}
-@media(max-width:1023px){#capa5 header nav{display:none!important}}
+
+/* Fifth proposal — final responsive and accessibility pass */
+#capa5 .capa5-menu-toggle { font-size:22px; line-height:1; cursor:pointer; transition:background .2s ease,border-color .2s ease; }
+#capa5 .capa5-menu-toggle:hover { background:#edf2e8; border-color:rgba(30,122,59,.4); }
+#capa5 .capa5-mobile-menu { position:relative; z-index:45; }
+#capa5 .capa5-mobile-menu.hidden { display:none; }
+#capa5 .capa5-mobile-menu:not(.hidden) { display:flex; }
+#capa5 .capa5-mobile-menu-link { display:block; border-radius:12px; padding:12px 14px; font-size:13px; font-weight:700; color:#202420; transition:background .2s ease,color .2s ease; }
+#capa5 .capa5-mobile-menu-link:hover { background:#edf2e8; color:#1E7A3B; }
+#capa5 a:focus-visible, #capa5 button:focus-visible { outline:3px solid #A7CE54; outline-offset:3px; }
+#capa5 .animate-marquee { display:flex; width:max-content; gap:0; will-change:transform; }
+#capa5 .marquee-group > span { flex:0 0 auto; }
+#capa5 .sched-row { min-width:0; }
+#capa5 .sched-row > div { min-width:0; }
+#capa5 .sched-row > span { flex:0 0 auto; }
+#capa5 .project-card .project-img { object-position:center; }
+@media(min-width:1024px) { #capa5 .capa5-mobile-menu { display:none!important; } }
+@media(max-width:639px) {
+  #capa5 .sched-row { flex-direction:column; align-items:flex-start; gap:10px; }
+  #capa5 #capa5-horarios .schedule-filters { width:100%; }
+  #capa5 #capa5-horarios .schedule-filters button { padding:7px 10px; }
+  #capa5 .service-row:hover { padding-left:.4rem; padding-right:.4rem; }
+}
+@media(prefers-reduced-motion:reduce) {
+  #capa5 .animate-marquee { animation:none!important; }
+  #capa5 .service-row, #capa5 .arrow-btn, #capa5 .project-img { transition:none!important; }
+}
+
 </style>
 <script>tailwind.config = { corePlugins: { preflight: false }, theme: { extend: { fontFamily: { display: ['Manrope', 'sans-serif'], syne: ['Manrope', 'sans-serif'], serif: ['DM Serif Display', 'serif'], sans: ['DM Sans', 'sans-serif'] }, colors: { oviax: { dark: '#0A0B0A', card: '#121513', light: '#F6F6F3', white: '#FFFFFF', borderDark: 'rgba(255, 255, 255, 0.1)', borderLight: 'rgba(10, 11, 10, 0.1)', green: '#1E7A3B', lime: '#A7CE54' } } } } };</script><script src="https://cdn.tailwindcss.com"></script></head>
 <body>
@@ -564,45 +591,46 @@
 </section><section class="bottom-cta"><div><h3>Vamos pôr o movimento em marcha?</h3><p>Contacta o clube para saber mais sobre a patinagem artística, os treinos e as formas de participação.</p></div><a class="site-cta" href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Entrar em contacto <span class="arrow">↗</span></a></section>
 <footer class="site-footer"><strong>Clube Araújo Patinagem Artística</strong><span>Website conceptual · Conteúdo por confirmar</span><a href="https://www.facebook.com/ClubeAraujoPA/?locale=pt_PT" rel="noopener" target="_blank">Facebook ↗</a></footer>
 </main>
-<main aria-hidden="true" aria-label="Proposta 5 — Oviax contemporâneo" class="concept" id="capa5"><!-- Toast Feedback --><div class="fixed bottom-6 right-6 z-50 hidden bg-oviax-dark text-white border border-oviax-lime px-5 py-3.5 rounded-full shadow-2xl text-xs font-semibold flex items-center gap-3" id="copy-toast">
-<span class="w-5 h-5 rounded-full bg-oviax-lime text-oviax-dark flex items-center justify-center font-bold">✓</span>
-<span id="toast-msg">Copiado com sucesso!</span>
-</div><!-- =====================================================================
+<main aria-hidden="true" aria-label="Proposta 5 — Oviax contemporâneo" class="concept" id="capa5"><!-- =====================================================================
        OVIAX SECTION 01: HEADER / NAVBAR
        ===================================================================== --><header class="sticky top-0 z-40 bg-[#F6F6F3]/90 backdrop-blur-md border-b border-black/10">
 <div class="max-w-[1360px] mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
 <!-- Left: Brand Logo -->
-<a class="flex items-center gap-3 group" href="#">
+<a aria-label="Clube Araújo — início" class="flex items-center gap-3 group" href="#capa5">
 <img alt="Logótipo oficial do Clube Araújo Patinagem Artística" class="w-11 h-11 rounded-full border border-black/10 bg-white p-0.5" data-club-logo=""/>
 <div class="leading-none">
 <span class="font-display font-extrabold text-lg tracking-tight text-oviax-dark block">CLUBE ARAÚJO<span class="text-oviax-green">.</span></span>
 <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Leça do Balio • 2006</span>
 </div>
 </a>
-<!-- Center: Oviax Pill Navigation -->
-<nav class="hidden lg:flex items-center gap-1 bg-white border border-black/10 rounded-full p-1.5 shadow-sm">
-<a class="px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:bg-oviax-dark hover:text-white transition" href="#sobre">O Clube</a>
-<a class="px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:bg-oviax-dark hover:text-white transition" href="#escaloes">Escalões</a>
-<a class="px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:bg-oviax-dark hover:text-white transition" href="#destaques">A Pista</a>
-<a class="px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:bg-oviax-dark hover:text-white transition" href="#capa5-horarios">Horários</a>
-<a class="px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:bg-oviax-dark hover:text-white transition" href="#capa5-horarios">Horários</a><a class="px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:bg-oviax-dark hover:text-white transition" href="#capa5-contactos">Contactos</a><a class="px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:bg-oviax-dark hover:text-white transition" href="#faq">FAQ</a>
-<a class="px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:bg-oviax-dark hover:text-white transition" href="#capa5-contactos">Contactos</a>
+<!-- Primary navigation: concise, with no duplicate links -->
+<nav aria-label="Navegação principal" class="hidden lg:flex items-center gap-1 bg-white border border-black/10 rounded-full p-1.5 shadow-sm">
+  <a class="px-4 py-2 rounded-full text-xs font-semibold text-neutral-700 hover:bg-oviax-dark hover:text-white transition" href="#escaloes">Escalões</a>
+  <a class="px-4 py-2 rounded-full text-xs font-semibold text-neutral-700 hover:bg-oviax-dark hover:text-white transition" href="#destaques">A Pista</a>
+  <a class="px-4 py-2 rounded-full text-xs font-semibold text-neutral-700 hover:bg-oviax-dark hover:text-white transition" href="#faq">Dúvidas</a>
 </nav>
+<button aria-controls="capa5-mobile-menu" aria-expanded="false" aria-label="Abrir menu" class="capa5-menu-toggle lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/15 bg-white text-oviax-dark" id="capa5-menu-toggle" type="button">
+  <span aria-hidden="true" data-menu-icon>☰</span>
+</button>
 <!-- Right: Oviax Signature Pill Button with Circle Arrow -->
-<a class="group bg-oviax-dark hover:bg-oviax-green text-white pl-5 pr-2 py-2 rounded-full inline-flex items-center gap-3 text-xs font-semibold transition-all duration-300" href="#capa5-contactos">
+<a class="hidden sm:inline-flex group bg-oviax-dark hover:bg-oviax-green text-white pl-5 pr-2 py-2 rounded-full items-center gap-3 text-xs font-semibold transition-all duration-300" href="#capa5-contactos">
 <span>1.ª Aula Grátis</span>
 <span class="w-7 h-7 rounded-full bg-oviax-lime text-oviax-dark flex items-center justify-center font-bold group-hover:rotate-45 transition-transform duration-300">↗</span>
 </a>
 </div>
-</header><nav aria-label="Navegação rápida" class="design-mobile-nav"><a href="#sobre">O clube</a><a href="#capa5-horarios">Horários</a><a href="#capa5-contactos">Contactos</a></nav><!-- =====================================================================
+<nav aria-label="Menu móvel" class="capa5-mobile-menu hidden lg:hidden mx-4 mb-4 p-2 rounded-2xl border border-black/10 bg-white shadow-lg flex flex-col gap-1" id="capa5-mobile-menu">
+  <a class="capa5-mobile-menu-link" href="#escaloes">Escalões</a>
+  <a class="capa5-mobile-menu-link" href="#destaques">A Pista</a>
+  <a class="capa5-mobile-menu-link" href="#faq">Dúvidas</a>
+</nav>
+</header><!-- =====================================================================
        OVIAX SECTION 02: HERO SECTION (Oviax Signature Layout)
        ===================================================================== --><section class="max-w-[1360px] mx-auto px-4 sm:px-8 pt-12 sm:pt-20 pb-16">
 <!-- Oviax Top Availability Pill & Location Row -->
 <div class="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-black/10">
 <div class="inline-flex items-center gap-2.5 bg-white border border-black/10 rounded-full px-4 py-2 shadow-sm">
-<span class="w-2.5 h-2.5 rounded-full bg-oviax-green animate-ping"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-oviax-green -ml-5"></span>
-<span class="text-xs font-semibold tracking-wide uppercase text-oviax-dark">Inscrições Abertas • 1.ª Aula Experimental Gratuita</span>
+<span aria-hidden="true" class="w-2.5 h-2.5 rounded-full bg-oviax-green"></span>
+<span class="text-xs font-semibold tracking-wide uppercase text-oviax-dark">1.ª aula experimental gratuita</span>
 </div>
 <div class="flex items-center gap-6 text-xs font-semibold uppercase tracking-widest text-neutral-500">
 <span>(Leça do Balio, Matosinhos)</span>
@@ -612,22 +640,18 @@
 </div>
 <!-- Oviax Giant Display Title with Inline Image Pill -->
 <div class="py-10 sm:py-14">
-<h1 class="font-display font-extrabold text-[42px] sm:text-[68px] lg:text-[88px] leading-[0.98] tracking-[-0.03em] text-oviax-dark">
-        PATINAGEM
-        <span aria-label="Clube Araújo" class="inline-flex items-center justify-center align-middle mx-1 sm:mx-3 w-20 sm:w-36 h-10 sm:h-16 rounded-full bg-oviax-green text-white font-display font-extrabold text-xs sm:text-base tracking-[0.16em] shadow-md">CAPA</span>
-        ARTÍSTICA <span class="font-serif italic font-normal text-oviax-green">de Excelência</span> EM LEÇA DO BALIO.
-      </h1>
+<h1 class="font-display font-extrabold text-[42px] sm:text-[68px] lg:text-[88px] leading-[0.92] tracking-[-0.055em] text-oviax-dark max-w-5xl">
+  PATINAGEM<br/>ARTÍSTICA
+  <span class="block font-serif italic font-normal text-oviax-green text-[30px] sm:text-[45px] lg:text-[58px] leading-[1.02] tracking-[-0.035em] mt-4 sm:mt-5">em movimento.</span>
+</h1>
 <!-- Sub-row under Giant Heading (Oviax 2-Column Split) -->
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-10 items-end">
 <div class="lg:col-span-5 flex items-center gap-4">
-<div class="flex -space-x-3">
-<img alt="Logótipo oficial do Clube Araújo Patinagem Artística" class="w-12 h-12 rounded-full border-2 border-white bg-white shadow" data-club-logo=""/>
-<span class="w-12 h-12 rounded-full border-2 border-white bg-oviax-green text-white text-xs font-bold flex items-center justify-center shadow">+100</span>
-</div>
+<div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-full bg-oviax-green/10 border border-oviax-green/20 flex items-center justify-center text-oviax-green font-display font-extrabold text-sm">2006</div>
 <div class="text-xs text-neutral-600 leading-snug">
-<strong class="text-oviax-dark block text-sm">Mais de 100 atletas ativos</strong>
-            Formação dos 3 anos à competição nacional desde 2006.
-          </div>
+<strong class="text-oviax-dark block text-sm">Clube Araújo</strong>
+<span>Patinagem artística em Leça do Balio.</span>
+</div>
 </div>
 <div class="lg:col-span-7 flex flex-col sm:flex-row sm:items-center justify-between gap-6 lg:pl-12 lg:border-l border-black/10">
 <p class="text-sm sm:text-base text-neutral-600 max-w-md leading-relaxed">
@@ -642,8 +666,9 @@
 </div>
 <!-- Oviax Hero Full-Width Visual Banner Card -->
 <div class="relative rounded-[28px] sm:rounded-[36px] overflow-hidden border border-black/10 shadow-2xl bg-oviax-dark">
-<img alt="Atletas e Equipa do Clube Araújo de Patinagem Artística" class="w-full h-[340px] sm:h-[540px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOFBI6g8g2GrEb5iMMihZy3TzmkCH1vDsQSmouXzfoQqe-FFTHe_90pE6uGrAqStF8cS7Yp4WoObhI-WW5ff_qpMTT7G1_snl9-9vjI9Gn82SqHL3eWaxgJ7t4kD3WXgw4rFA3s1SE6NEJHUBbgiHX0mktyet6Muc6EpV9JFQpmoOoOAsdZFpsB6JZDJd6-b7x3eJYUzkMOWyp8CsLVT21iQcwJ1V5-EoNKwly-bFLfXAfKv2yQZwWk78ZkNUhDY4ppZE"/>
+<img alt="Fotografia de referência de patinagem artística; substituir por imagem autorizada do clube" class="w-full h-[340px] sm:h-[540px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOFBI6g8g2GrEb5iMMihZy3TzmkCH1vDsQSmouXzfoQqe-FFTHe_90pE6uGrAqStF8cS7Yp4WoObhI-WW5ff_qpMTT7G1_snl9-9vjI9Gn82SqHL3eWaxgJ7t4kD3WXgw4rFA3s1SE6NEJHUBbgiHX0mktyet6Muc6EpV9JFQpmoOoOAsdZFpsB6JZDJd6-b7x3eJYUzkMOWyp8CsLVT21iQcwJ1V5-EoNKwly-bFLfXAfKv2yQZwWk78ZkNUhDY4ppZE"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<span class="absolute top-4 right-4 rounded-full border border-white/20 bg-black/55 backdrop-blur-md px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white">Fotografia de referência</span>
 <!-- Floating Bottom Bar inside Hero Image (Oviax Style) -->
 <div class="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 right-4 sm:right-8 flex flex-wrap items-end justify-between gap-4">
 <div class="bg-black/65 backdrop-blur-md border border-white/15 rounded-2xl p-4 sm:p-5 text-white max-w-lg">
@@ -662,21 +687,20 @@
 </section><!-- =====================================================================
        OVIAX SECTION 03: INFINITE LOGO / TEXT MARQUEE STRIP
        ===================================================================== --><div class="bg-oviax-dark text-white py-5 border-y border-black/10 overflow-hidden">
-<div class="animate-marquee flex items-center gap-12 text-xs sm:text-sm font-display font-bold uppercase tracking-[0.18em]">
-<span class="flex items-center gap-3"><span class="text-oviax-lime text-lg">✺</span> CLUBE ARAÚJO DE PATINAGEM ARTÍSTICA</span>
+<div class="animate-marquee text-xs sm:text-sm font-display font-bold uppercase tracking-[0.18em]">
+  <div class="marquee-group flex items-center gap-12 shrink-0"><span class="flex items-center gap-3"><span class="text-oviax-lime text-lg">✺</span> CLUBE ARAÚJO DE PATINAGEM ARTÍSTICA</span>
 <span class="flex items-center gap-3"><span class="text-oviax-green text-lg">✺</span> FUNDADO EM 2006 EM LEÇA DO BALIO</span>
 <span class="flex items-center gap-3"><span class="text-oviax-lime text-lg">✺</span> 1.ª AULA EXPERIMENTAL GRATUITA</span>
 <span class="flex items-center gap-3"><span class="text-oviax-green text-lg">✺</span> EMPRESTAMOS OS PATINS INICIAIS</span>
 <span class="flex items-center gap-3"><span class="text-oviax-lime text-lg">✺</span> PATINAGEM LIVRE &amp; SOLO DANCE</span>
-<span class="flex items-center gap-3"><span class="text-oviax-green text-lg">✺</span> #SOMOSCAPA</span>
-<!-- Duplicate for seamless loop -->
-<span class="flex items-center gap-3"><span class="text-oviax-lime text-lg">✺</span> CLUBE ARAÚJO DE PATINAGEM ARTÍSTICA</span>
+<span class="flex items-center gap-3"><span class="text-oviax-green text-lg">✺</span> #SOMOSCAPA</span></div>
+  <div aria-hidden="true" class="marquee-group flex items-center gap-12 shrink-0"><span class="flex items-center gap-3"><span class="text-oviax-lime text-lg">✺</span> CLUBE ARAÚJO DE PATINAGEM ARTÍSTICA</span>
 <span class="flex items-center gap-3"><span class="text-oviax-green text-lg">✺</span> FUNDADO EM 2006 EM LEÇA DO BALIO</span>
 <span class="flex items-center gap-3"><span class="text-oviax-lime text-lg">✺</span> 1.ª AULA EXPERIMENTAL GRATUITA</span>
 <span class="flex items-center gap-3"><span class="text-oviax-green text-lg">✺</span> EMPRESTAMOS OS PATINS INICIAIS</span>
 <span class="flex items-center gap-3"><span class="text-oviax-lime text-lg">✺</span> PATINAGEM LIVRE &amp; SOLO DANCE</span>
-</div>
-</div><!-- =====================================================================
+<span class="flex items-center gap-3"><span class="text-oviax-green text-lg">✺</span> #SOMOSCAPA</span></div>
+</div></div><!-- =====================================================================
        OVIAX SECTION 04: ABOUT & 4-COUNTER BENTO GRID (01 // SOBRE NÓS)
        ===================================================================== --><section class="max-w-[1360px] mx-auto px-4 sm:px-8 py-24" id="sobre">
 <!-- Oviax Section Header -->
@@ -720,12 +744,12 @@
 </div>
 <div class="bg-white border border-black/10 rounded-[28px] p-8 flex flex-col justify-between min-h-[230px] shadow-sm hover:shadow-md transition">
 <div class="flex items-center justify-between text-xs font-semibold text-neutral-400 uppercase tracking-wider">
-<span>03 / Comunidade</span>
+<span>03 / Vertentes</span>
 <span class="w-2 h-2 rounded-full bg-oviax-green"></span>
 </div>
 <div>
-<span class="font-display font-extrabold text-5xl sm:text-6xl text-oviax-dark tracking-tight block">+100</span>
-<p class="text-xs sm:text-sm text-neutral-600 mt-2 font-medium">Atletas em formação, testes de nível, competição e gala anual.</p>
+<span class="font-display font-extrabold text-3xl sm:text-4xl text-oviax-dark tracking-tight block">2 vertentes</span>
+<p class="text-xs sm:text-sm text-neutral-600 mt-2 font-medium">Patinagem Livre e Solo Dance.</p>
 </div>
 </div>
 <div class="bg-oviax-dark text-white rounded-[28px] p-8 flex flex-col justify-between min-h-[230px] shadow-lg">
@@ -857,11 +881,12 @@
 <!-- Card 01 -->
 <div class="project-card group bg-[#121613] border border-white/10 rounded-[32px] p-4 sm:p-6 flex flex-col justify-between">
 <div class="relative rounded-[24px] overflow-hidden h-[280px] sm:h-[340px]">
-<img alt="Competição Oficial CAPA" class="project-img w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOFBI6g8g2GrEb5iMMihZy3TzmkCH1vDsQSmouXzfoQqe-FFTHe_90pE6uGrAqStF8cS7Yp4WoObhI-WW5ff_qpMTT7G1_snl9-9vjI9Gn82SqHL3eWaxgJ7t4kD3WXgw4rFA3s1SE6NEJHUBbgiHX0mktyet6Muc6EpV9JFQpmoOoOAsdZFpsB6JZDJd6-b7x3eJYUzkMOWyp8CsLVT21iQcwJ1V5-EoNKwly-bFLfXAfKv2yQZwWk78ZkNUhDY4ppZE"/>
+<img alt="Fotografia de referência de uma competição de patinagem artística" class="project-img w-full h-full object-cover object-top" src="https://fpp.pt/wp-content/uploads/RZ9_1814.jpg"/>
 <div class="absolute top-4 left-4 flex gap-2">
 <span class="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[11px] font-semibold text-oviax-lime border border-white/15">APP &amp; FPP</span>
 <span class="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[11px] font-semibold text-white border border-white/15">Desde 2006</span>
 </div>
+<span class="absolute bottom-4 right-4 rounded-full border border-white/20 bg-black/65 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white">Imagem de referência</span>
 </div>
 <div class="pt-6 px-2 flex items-end justify-between gap-4">
 <div>
@@ -880,10 +905,10 @@
 <span class="text-xs font-bold uppercase tracking-widest text-oviax-lime">(04) Horários Semanais</span>
 <h3 class="font-display font-bold text-2xl text-white mt-0.5">Quadro de Pista • Leça do Balio</h3>
 </div>
-<div class="flex gap-1.5">
-<button class="px-3 py-1 rounded-full text-xs font-bold bg-oviax-lime text-oviax-dark" id="f-all" onclick="filterSched('all')">Todos</button>
-<button class="px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white hover:bg-white/20" id="f-ini" onclick="filterSched('ini')">Iniciação</button>
-<button class="px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white hover:bg-white/20" id="f-comp" onclick="filterSched('comp')">Competição</button>
+<div class="schedule-filters flex flex-wrap gap-1.5">
+<button aria-pressed="true" class="px-3 py-1 rounded-full text-xs font-bold bg-oviax-lime text-oviax-dark" id="f-all" onclick="filterSched('all')">Todos</button>
+<button aria-pressed="false" class="px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white hover:bg-white/20" id="f-ini" onclick="filterSched('ini')">Iniciação</button>
+<button aria-pressed="false" class="px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white hover:bg-white/20" id="f-comp" onclick="filterSched('comp')">Competição</button>
 </div>
 </div>
 <div class="divide-y divide-white/10 mt-3 text-sm">
@@ -943,14 +968,14 @@
 <div class="p-6 rounded-[24px] bg-white border border-black/10 space-y-2">
 <span class="text-xs font-bold uppercase tracking-wider text-oviax-green">Dica Rápida CAPA</span>
 <p class="text-xs sm:text-sm text-neutral-700 leading-relaxed">
-            Basta enviar um email para <strong>capa_2006@sapo.pt</strong> ou ligar antes do treino indicando a <strong>idade</strong> e o <strong>número de calçado</strong> para deixarmos os patins preparados!
+            Antes da primeira aula, confirma com o clube a disponibilidade e indica a <strong>idade</strong> e o <strong>número de calçado</strong> para preparar os patins.
           </p>
 </div>
 </div>
 <!-- Right Column: Oviax Accordion FAQ -->
 <div class="lg:col-span-7 space-y-4">
 <div class="bg-white border border-black/10 rounded-[24px] p-6">
-<button class="w-full flex items-center justify-between text-left gap-4" onclick="toggleFaq(1)">
+<button aria-controls="faq-body-1" aria-expanded="true" class="w-full flex items-center justify-between text-left gap-4" onclick="toggleFaq(1)">
 <span class="font-display font-bold text-lg text-oviax-dark">01. Preciso de comprar patins logo para a primeira aula?</span>
 <span class="w-8 h-8 rounded-full bg-oviax-green text-white flex items-center justify-center font-bold shrink-0" id="faq-icon-1">−</span>
 </button>
@@ -959,7 +984,7 @@
           </div>
 </div>
 <div class="bg-white border border-black/10 rounded-[24px] p-6">
-<button class="w-full flex items-center justify-between text-left gap-4" onclick="toggleFaq(2)">
+<button aria-controls="faq-body-2" aria-expanded="false" class="w-full flex items-center justify-between text-left gap-4" onclick="toggleFaq(2)">
 <span class="font-display font-bold text-lg text-oviax-dark">02. A partir de que idade aceitam inscrições?</span>
 <span class="w-8 h-8 rounded-full bg-black/5 text-oviax-dark flex items-center justify-center font-bold shrink-0" id="faq-icon-2">+</span>
 </button>
@@ -968,7 +993,7 @@
           </div>
 </div>
 <div class="bg-white border border-black/10 rounded-[24px] p-6">
-<button class="w-full flex items-center justify-between text-left gap-4" onclick="toggleFaq(3)">
+<button aria-controls="faq-body-3" aria-expanded="false" class="w-full flex items-center justify-between text-left gap-4" onclick="toggleFaq(3)">
 <span class="font-display font-bold text-lg text-oviax-dark">03. O que deve o atleta levar para o primeiro treino?</span>
 <span class="w-8 h-8 rounded-full bg-black/5 text-oviax-dark flex items-center justify-center font-bold shrink-0" id="faq-icon-3">+</span>
 </button>
@@ -977,7 +1002,7 @@
           </div>
 </div>
 <div class="bg-white border border-black/10 rounded-[24px] p-6">
-<button class="w-full flex items-center justify-between text-left gap-4" onclick="toggleFaq(4)">
+<button aria-controls="faq-body-4" aria-expanded="false" class="w-full flex items-center justify-between text-left gap-4" onclick="toggleFaq(4)">
 <span class="font-display font-bold text-lg text-oviax-dark">04. Os pais podem assistir ao treino no pavilhão?</span>
 <span class="w-8 h-8 rounded-full bg-black/5 text-oviax-dark flex items-center justify-center font-bold shrink-0" id="faq-icon-4">+</span>
 </button>
@@ -1055,13 +1080,41 @@
   })();
 
 
+  (() => {
+    const toggle = document.getElementById('capa5-menu-toggle');
+    const menu = document.getElementById('capa5-mobile-menu');
+    if (!toggle || !menu) return;
+    const closeMenu = (returnFocus = false) => {
+      menu.classList.add('hidden');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Abrir menu');
+      const icon = toggle.querySelector('[data-menu-icon]');
+      if (icon) icon.textContent = '☰';
+      if (returnFocus) toggle.focus();
+    };
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') !== 'true';
+      menu.classList.toggle('hidden', !open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+      const icon = toggle.querySelector('[data-menu-icon]');
+      if (icon) icon.textContent = open ? '×' : '☰';
+    });
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => closeMenu()));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') closeMenu(true);
+    });
+  })();
+
   function filterSched(group) {
     const root = document.getElementById('capa5');
     if (!root) return;
     ['all', 'ini', 'comp'].forEach((g) => {
       const btn = root.querySelector('#f-' + g);
       if (!btn) return;
-      btn.className = g === group
+      const active = g === group;
+      btn.setAttribute('aria-pressed', String(active));
+      btn.className = active
         ? 'px-3 py-1 rounded-full text-xs font-bold bg-oviax-lime text-oviax-dark'
         : 'px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white hover:bg-white/20';
     });
@@ -1074,9 +1127,11 @@
     const root = document.getElementById('capa5');
     const body = root?.querySelector('#faq-body-' + index);
     const icon = root?.querySelector('#faq-icon-' + index);
+    const trigger = root?.querySelector('button[aria-controls="faq-body-' + index + '"]');
     if (!body || !icon) return;
     const isHidden = body.classList.contains('hidden');
     body.classList.toggle('hidden', !isHidden);
+    if (trigger) trigger.setAttribute('aria-expanded', String(isHidden));
     icon.textContent = isHidden ? '−' : '+';
     icon.className = isHidden
       ? 'w-8 h-8 rounded-full bg-oviax-green text-white flex items-center justify-center font-bold shrink-0'
